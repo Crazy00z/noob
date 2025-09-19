@@ -1,3 +1,4 @@
+------------- WOWHAH
 local items = items or {} -- Items to target (empty means all items except specified)
 local amount = amount or 10000 -- Amount to sell (script will use negative value)
 
