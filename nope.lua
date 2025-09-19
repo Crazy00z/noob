@@ -1,4 +1,4 @@
-------------- WOWHAH
+------------- WOWHAH123
 local items = items or {} -- Items to target (empty means all items except specified)
 local amount = amount or 10000 -- Amount to sell (script will use negative value)
 
@@ -37,8 +37,8 @@ local function findSenzuBeanUUID()
                                 print("✅ Found Senzu Bean with DisplayName: " .. itemData.Info.GUID)
                                 return itemData.Info.GUID
                             end
-                            -- Check if the item key itself contains senzu
-                            if string.find(string.lower(itemName), "senzu") then
+                            -- Check if the item key itself contains senzu (FIXED)
+                            if type(itemName) == "string" and string.find(string.lower(itemName), "senzu") then
                                 print("✅ Found Senzu Bean by key name: " .. itemData.Info.GUID)
                                 return itemData.Info.GUID
                             end
@@ -137,4 +137,5 @@ for i, uuid in ipairs(uniqueUUIDs) do
     wait(0.1)
 end
 
+print("✅ Script complete! Sold " .. #uniqueUUIDs .. " items with amount: -" .. amount)
 print("✅ Script complete! Sold " .. #uniqueUUIDs .. " items with amount: -" .. amount)
