@@ -1,14 +1,14 @@
 local MacLib = loadstring(game:HttpGet("https://github.com/biggaboy212/Maclib/releases/latest/download/maclib.txt"))()
 
 local Window = MacLib:Window({
-	Title = "Exploit Window",
-	Subtitle = "Hero Upgrade Exploit",
-	Size = UDim2.fromOffset(400, 300),
-	DragStyle = 1,
+	Title = "hitlet is real",
+	Subtitle = "we love hitler",
+	Size = UDim2.fromOffset(600, 900),
+	DragStyle = 2,
 	DisabledWindowControls = {},
-	ShowUserInfo = true,
+	ShowUserInfo = false,
 	Keybind = Enum.KeyCode.RightControl,
-	AcrylicBlur = true,
+	AcrylicBlur = false,
 })
 
 local tabGroups = {
