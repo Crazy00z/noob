@@ -1,7 +1,7 @@
 local MacLib = loadstring(game:HttpGet("https://github.com/biggaboy212/Maclib/releases/latest/download/maclib.txt"))()
 
 local player = game:GetService("Players").LocalPlayer
-local equiped = player["\233\152\159\228\188\141"] -- 装备
+local equiped = player["装备"] -- 装备
 local charIds = {}
 local charIdOptions = {}
 
@@ -77,7 +77,7 @@ sections.MainSection:Button({
 			wait(0.1) -- add a small delay to avoid rate limiting
 		end
 		Window:Notify({
-			Title = "nigga",
+			Title = "Exploit",
 			Description = "Infinite items attempt completed.",
 			Lifetime = 5
 		})
