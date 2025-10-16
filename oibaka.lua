@@ -66,7 +66,7 @@ sections.MainSection:Button({
 				[2] = {
 					["OnlyID"] = selectedCharId;
 					["CountVt"] = {
-						[1] = 1/0;
+						[1] = 0/0;
 					};
 					["ItemVt"] = {
 						[1] = i;
