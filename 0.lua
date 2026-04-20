@@ -2335,9 +2335,11 @@ ThemeManager:ApplyToTab(Tabs.UISettings)
 SaveManager:LoadAutoloadConfig()
 ThemeManager:LoadDefault()
 task.spawn(function()
-    task.wait(1.5)
+    task.wait(2)
     if Library.Options.AutoCloseUIToggle and Library.Options.AutoCloseUIToggle.Value then
-        Library:SetOpen(false)
+        VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.RightShift, false, game)
+        task.wait(0.1)
+        VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.RightShift, false, game)
     end
 end)
 
