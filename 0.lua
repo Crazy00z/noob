@@ -1716,7 +1716,7 @@ CreditsGroup:AddButton({
 
 local MenuGroup = Tabs.UISettings:AddLeftGroupbox("Menu")
 MenuGroup:AddLabel("Menu bind"):AddKeyPicker("MenuKeybind", {
-    Default = "RightShift",
+    Default = "RightShift", 
     NoUI    = true,
     Text    = "Menu keybind",
 })
@@ -2334,13 +2334,16 @@ ThemeManager:ApplyToTab(Tabs.UISettings)
 SaveManager:LoadAutoloadConfig()
 ThemeManager:LoadDefault()
 task.spawn(function()
-    task.wait(1)
-    if Library.Options.AutoCloseUIToggle and Library.Options.AutoCloseUIToggle.Value then
-        local keybind = Library.Options.MenuKeybind and Library.Options.MenuKeybind.Value or "RightShift"
-        VirtualInputManager:SendKeyEvent(true, Enum.KeyCode[keybind], false, game)
-        task.wait(0.1)
-        VirtualInputManager:SendKeyEvent(false, Enum.KeyCode[keybind], false, game)
-    end
+    task.wait(2)
+    -- Debug: check if toggle exists and its value
+    local toggle = Library.Options.AutoCloseUIToggle
+    warn("Toggle exists:", toggle ~= nil)
+    if toggle then warn("Toggle value:", toggle.Value) end
+    
+    -- Force close regardless (test if the keypress works at all)
+    VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.RightShift, false, game)
+    task.wait(0.1)
+    VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.RightShift, false, game)
 end)
 
 setclipboard("https://discord.gg/Mf6tXaRgUa")
