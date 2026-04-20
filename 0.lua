@@ -1725,9 +1725,8 @@ Library.ToggleKeybind = Library.Options.MenuKeybind
 local AutoCloseUI = false
 
 MenuGroup:AddToggle("AutoCloseUIToggle", {
-    Text    = "Auto Close UI on Execute",
+    Text    = "Auto Close UI On Execute",
     Default = false,
-    Callback = function(v) AutoCloseUI = v end,
 })
 
 -- Auto close UI once on load if toggled
@@ -2335,11 +2334,12 @@ ThemeManager:ApplyToTab(Tabs.UISettings)
 SaveManager:LoadAutoloadConfig()
 ThemeManager:LoadDefault()
 task.spawn(function()
-    task.wait(2)
+    task.wait(1)
     if Library.Options.AutoCloseUIToggle and Library.Options.AutoCloseUIToggle.Value then
-        VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.RightShift, false, game)
+        local keybind = Library.Options.MenuKeybind and Library.Options.MenuKeybind.Value or "RightShift"
+        VirtualInputManager:SendKeyEvent(true, Enum.KeyCode[keybind], false, game)
         task.wait(0.1)
-        VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.RightShift, false, game)
+        VirtualInputManager:SendKeyEvent(false, Enum.KeyCode[keybind], false, game)
     end
 end)
 
