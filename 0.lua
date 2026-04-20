@@ -1722,6 +1722,21 @@ MenuGroup:AddLabel("Menu bind"):AddKeyPicker("MenuKeybind", {
 })
 Library.ToggleKeybind = Library.Options.MenuKeybind
 
+local AutoCloseUI = false
+
+MenuGroup:AddToggle("AutoCloseUIToggle", {
+    Text    = "Auto Close UI on Execute",
+    Default = false,
+    Callback = function(v) AutoCloseUI = v end,
+})
+
+-- Auto close UI once on load if toggled
+task.spawn(function()
+    task.wait(2) -- wait for UI to fully load
+    if AutoCloseUI or (Library.Options.AutoCloseUIToggle and Library.Options.AutoCloseUIToggle.Value) then
+        Library:SetOpen(false)
+    end
+end)
 --------------------------------------------------------------------------------
 -- MAIN RENDERSTEPPED
 --------------------------------------------------------------------------------
@@ -2319,5 +2334,11 @@ ThemeManager:ApplyToTab(Tabs.UISettings)
 
 SaveManager:LoadAutoloadConfig()
 ThemeManager:LoadDefault()
+task.spawn(function()
+    task.wait(1.5)
+    if Library.Options.AutoCloseUIToggle and Library.Options.AutoCloseUIToggle.Value then
+        Library:SetOpen(false)
+    end
+end)
 
 setclipboard("https://discord.gg/Mf6tXaRgUa")
